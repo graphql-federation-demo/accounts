@@ -1,0 +1,25 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@shareable"])
+
+extend type Query {
+    me: User @access(role: ["acme_member", "acme_employee", "acme_manager"])
+    login(id: Int, password: String): User @ratelimit(allowance: 3, period: "1m") @access(role: ["acme_guest", "acme_member"])
+}
+
+type User @key(fields: "id") {
+    id: ID!
+    name: String
+    username: String @shareable
+}
+
+directive @access(
+    depth: Int
+    role: [String]
+) on FIELD_DEFINITION
+
+directive @ratelimit(
+    allowance: Int!
+    period: String!
+    profile: String
+) on FIELD_DEFINITION

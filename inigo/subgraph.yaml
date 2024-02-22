@@ -1,0 +1,14 @@
+kind: Subgraph
+name: accounts
+label_vars:
+  local:
+    URL: "http://localhost:4001/graphql"
+  dev:
+    URL: "https://accounts.dev.demo/graphql"
+  prod:
+    URL: "https://accounts.demo/graphql"
+spec: 
+  gateway: demo-gateway
+  url: {{.URL}}
+  schema_files:
+  - ../schema.graphql
