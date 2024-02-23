@@ -22,15 +22,15 @@ jobs:
         run: ls -l;
 
       - name: Install Inigo CLI
-        run: rm -R inigo* | curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz;
+        run: curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz;
 
       - name: Inigo CLI Login
         env:
           INIGO_USERNAME: ${{ secrets.INIGO_USERNAME }}
           INIGO_PASSWORD: ${{ secrets.INIGO_PASSWORD }}
-        run: ./inigo login
+        run: inigo login
 
       - name: Inigo Check for ${{ env.TARGET_BRANCH_NAME }}
-        run: ./inigo check inigo/**/*.yaml --label ${TARGET_BRANCH_NAME}
+        run: inigo check inigo/*.yaml --label ${TARGET_BRANCH_NAME}
           
       - run: npm run build --if-present
