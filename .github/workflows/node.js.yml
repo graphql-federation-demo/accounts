@@ -22,7 +22,7 @@ jobs:
         run: ls -lR;
 
       - name: Install Inigo CLI
-        run: mkdir -p bin | curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz -C bin | echo "$HOME/bin" >> $GITHUB_PATH;
+        run: mkdir -p bin | curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz -C bin | echo "$HOME/bin" >> $PATH;
 
       - name: path
         run: echo $PATH;
