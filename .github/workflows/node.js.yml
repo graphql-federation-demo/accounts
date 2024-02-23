@@ -33,7 +33,7 @@ jobs:
         INIGO_PASSWORD: ${{ secrets.INIGO_PASSWORD }}
       run: ./inigo login
 
-    - name: Inigo Check for ${{ TARGET_BRANCH_NAME }}
+    - name: Inigo Check for ${{ env.TARGET_BRANCH_NAME }}
       run: ./inigo check inigo/**/*.yaml --label ${TARGET_BRANCH_NAME}
         
     - run: npm run build --if-present
