@@ -19,7 +19,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Inigo CLI
-        run: wget -c https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz -O - | tar -xz;
+        run: curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz;
 
       - name: Inigo CLI Login
         env:
