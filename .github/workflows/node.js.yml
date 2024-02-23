@@ -18,22 +18,13 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: home
-        run: echo $HOME;
-
-      - name: ls
-        run: ls $HOME;
-
       - name: Install Inigo CLI
         shell: bash
         run: mkdir -p bin | curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz -C bin;
 
       - name: Set PATH
         shell: bash
-        run: echo "$HOME/bin" >> $GITHUB_PATH;
-
-      - name: path
-        run: echo $PATH;
+        run: echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH;
 
       - name: Inigo CLI Login
         env:
