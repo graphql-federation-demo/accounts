@@ -30,10 +30,10 @@ jobs:
           INIGO_PASSWORD: ${{ secrets.INIGO_PASSWORD }}
         run: inigo login
 
-      - name: ls
-        run: ls -lR;
+      - name: Set PATH
+        run: echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH;
 
       - name: Inigo Check for ${{ env.TARGET_BRANCH_NAME }}
-        run: inigo check inigo/*.yaml --label ${TARGET_BRANCH_NAME}
+        run: inigo check inigo/**.yaml --label ${TARGET_BRANCH_NAME}
           
       - run: npm run build
