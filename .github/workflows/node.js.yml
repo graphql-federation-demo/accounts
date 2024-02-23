@@ -19,11 +19,9 @@ jobs:
           cache: 'npm'
 
       - name: Install Inigo CLI
-        shell: bash
         run: mkdir -p bin | curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz -C bin;
 
       - name: Set PATH
-        shell: bash
         run: echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH;
 
       - name: Inigo CLI Login
@@ -32,7 +30,10 @@ jobs:
           INIGO_PASSWORD: ${{ secrets.INIGO_PASSWORD }}
         run: inigo login
 
+      - name: ls
+        run: ls -lR;
+
       - name: Inigo Check for ${{ env.TARGET_BRANCH_NAME }}
-        run: inigo check inigo/**/*.yaml --label ${TARGET_BRANCH_NAME}
+        run: inigo check inigo/*.yaml --label ${TARGET_BRANCH_NAME}
           
       - run: npm run build
