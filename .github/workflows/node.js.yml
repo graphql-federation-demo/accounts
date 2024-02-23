@@ -18,8 +18,11 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      - name: ls
+        run: ls -l;
+
       - name: Install Inigo CLI
-        run: rm inigo* | wget -c https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz -O - | tar -xz;
+        run: rm inigo* | wget -c https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz -O - | tar -xz --overwrite;
 
       - name: Inigo CLI Login
         env:
