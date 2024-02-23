@@ -22,7 +22,7 @@ jobs:
         run: ls -l;
 
       - name: Install Inigo CLI
-        run: rm inigo* | curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz;
+        run: rm -R inigo* | curl -s -L https://github.com/inigolabs/artifacts/releases/latest/download/cli_linux_amd64.tar.gz | tar -xz;
 
       - name: Inigo CLI Login
         env:
